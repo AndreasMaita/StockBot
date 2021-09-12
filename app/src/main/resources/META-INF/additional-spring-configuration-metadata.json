@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "fauna-db.secret",
+      "type": "java.lang.String",
+      "description": " for fauna-db.secret."
+    }
+  ] }

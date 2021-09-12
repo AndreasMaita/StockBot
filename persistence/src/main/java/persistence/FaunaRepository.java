@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 
 import static com.faunadb.client.query.Language.*;
 
-@AllArgsConstructor
 public abstract class FaunaRepository<T extends Entity> implements Repository<T>, IdentityFactory {
     @Autowired
     protected FaunaClient faunaClient;
@@ -27,6 +26,12 @@ public abstract class FaunaRepository<T extends Entity> implements Repository<T>
     protected final Class<T> entityType;
     protected final String collectionName;
     protected final String collectionIndexName;
+
+    protected FaunaRepository(Class<T> entityType, String collectionName, String collectionIndexName){
+        this.entityType = entityType;
+        this.collectionName = collectionName;
+        this.collectionIndexName = collectionIndexName;
+    }
 
     @Override
     public CompletableFuture<String> nextId() {
